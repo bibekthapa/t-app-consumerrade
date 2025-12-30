@@ -1,0 +1,37 @@
+{
+  "type": "record",
+  "name": "Trade",
+  "namespace": "com.example",
+  "fields": [
+    {"name": "tradeId", "type": "string"},
+    {"name": "tradeType", "type": "string"},
+    {
+      "name": "price",
+      "type": {
+        "type": "record",
+        "name": "Price",
+        "fields": [
+          {"name": "current", "type": "double"},
+          {"name": "open", "type": "double"},
+          {"name": "high", "type": "double"},
+          {"name": "low", "type": "double"},
+          {"name": "volume", "type": "double"},
+          {"name": "close", "type": "double"}
+        ]
+      }
+    },
+    {
+  "name": "timestamp",
+  "type": ["null", {
+    "type": "record",
+    "name": "Time",
+    "fields": [
+      { "name": "epochMillis", "type": ["null", "long"], "default": null }
+    ]
+  }],
+  "default": null
+}
+
+   
+  ]
+}
