@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: consumer
+  name: consumer
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: consumer
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: consumer
+    spec:
+      containers:
+      - image: bibekthapahere/consumer:1.0
+        imagePullPolicy: Always
+        name: consumer 
+        resources: {}
+status: {}

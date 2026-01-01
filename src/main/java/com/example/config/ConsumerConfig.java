@@ -24,7 +24,8 @@ public class ConsumerConfig {
     @Value("${spring.kafka.bootstrap-servers}")
     private String bootStrapServers;
 
-   
+    @Value("${spring.kafka.schema-registry-url}")
+    private String schemaRegistry;
 
     public Map<String,Object> propertiesMap(){
 
@@ -32,8 +33,8 @@ public class ConsumerConfig {
         propMap.put(org.apache.kafka.clients.consumer.ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, bootStrapServers);
         propMap.put(org.apache.kafka.clients.consumer.ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG,StringDeserializer.class);
         propMap.put(org.apache.kafka.clients.consumer.ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, KafkaAvroDeserializer.class);
-        propMap.put("schema.registry.url" , "http://localhost:8081");
         propMap.put(KafkaAvroDeserializerConfig.SPECIFIC_AVRO_READER_CONFIG , true);
+        propMap.put("schema.registry.url",schemaRegistry);
         return  propMap;      
     }
 
